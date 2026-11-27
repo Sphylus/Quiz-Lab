@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="BookSkill.css">
+</head>
+
+<body>
+  <div class="book">
+    <!-- book image -->
+    <img class="layer-image" src="IMAGES/Book.png" alt="Book Image">
+
+    <!-- left page -->
+    <div class="page page-left">
+
+      <!-- skill 1 -->
+      <div class="skill">
+        <img class="skill-photo" src="IMAGES/Logical.jpg" alt="Logical Thinking">
+        <div class="skill-info">
+          <p>
+            <span class="info-label">Skill</span>
+            <span class="info-value">Logical Thinking</span>
+          </p>
+          <p>
+            <span class="info-label">Info</span>
+            <span class="info-value">I break problems into smaller steps and use facts and clear reasoning to find solutions, which helps me in my studies.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- skill 2 -->
+      <div class="skill">
+        <img class="skill-photo" src="IMAGES/Creative.jpg" alt="Creative Thinking">
+        <div class="skill-info">
+          <p>
+            <span class="info-label">Skill</span>
+            <span class="info-value">Creative Thinking</span>
+          </p>
+          <p>
+            <span class="info-label">Info</span>
+            <span class="info-value">I come up with fresh ideas and explore different ways to solve problems, which helps me in my studies and projects.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- right page -->
+    <div class="page page-right">
+
+      <!-- skill 3 -->
+      <div class="skill">
+        <img class="skill-photo" src="IMAGES/Delusional.jpg" alt="Delusional Thinking">
+        <div class="skill-info">
+          <p>
+            <span class="info-label">Skill</span>
+            <span class="info-value">Delusional Thinking</span>
+          </p>
+          <p>
+            <span class="info-label">Info</span>
+            <span class="info-value">I believe in big dreams even before there's proof, and I'm brave enough to try anyway.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- skill 4 -->
+      <div class="skill">
+        <img class="skill-photo" src="IMAGES/Over.jpg" alt="Over Thinking">
+        <div class="skill-info">
+          <p>
+            <span class="info-label">Skill</span>
+            <span class="info-value">Over Thinking</span>
+          </p>
+          <p>
+            <span class="info-label">Info</span>
+            <span class="info-value">I analyze every detail and prepare for every possible scenario, so nothing ever catches me off guard!</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- left bookmarks -->
+    <div class="bookmark-wrap pos-left-1">
+      <button class="bookmark-btn bm-red" id="bm1">Personal Information</button>
+    </div>
+    <div class="bookmark-wrap pos-left-2">
+      <button class="bookmark-btn bm-blue" id="bm2">Educational Background</button>
+    </div>
+    <div class="bookmark-wrap pos-left-3">
+      <button class="bookmark-btn bm-green" id="bm3">Skills</button>
+    </div>
+
+    <!-- right bookmarks -->
+    <div class="bookmark-wrap pos-right-1">
+      <button class="bookmark-btn bm-purple" id="bm4">Hobbies</button>
+    </div>
+    <div class="bookmark-wrap pos-right-2">
+      <button class="bookmark-btn bm-orange" id="bm5">Contact Details</button>
+    </div>
+  </div>
+
+  <!-- close book button -->
+  <div class="close-wrap">
+    <button class="pixel-btn" id="closeBookBtn">Close Book</button>
+  </div>
+
+  <!-- background music -->
+  <audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+  <script>
+    // get the music
+    var music = document.getElementById("bgMusic");
+
+    // continue the music where it stopped
+    var savedTime = sessionStorage.getItem("musicTime");
+
+    if (savedTime != null) {
+      music.currentTime = savedTime;
+    }
+
+    // save the music time before leaving the page
+    window.onpagehide = function () {
+      sessionStorage.setItem("musicTime", music.currentTime);
+    };
+
+    // play the music
+    music.play();
+
+    // if the browser blocks it, play when the user clicks
+    document.onclick = function () {
+      music.play();
+    };
+
+    // or when the user presses a key
+    document.onkeydown = function () {
+      music.play();
+    };
+  </script>
+
+  <script src="Bookmark.js"></script>
+</body>
+</html>

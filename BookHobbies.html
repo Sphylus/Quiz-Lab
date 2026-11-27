@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Portfolio</title>
+<link rel="stylesheet" href="BookHobbies.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- the book -->
+<div class="book">
+
+<img class="layer-image" src="IMAGES/Book.png">
+
+<!-- left page -->
+<div class="page page-left">
+
+<div class="hobby">
+<img class="hobby-photo" src="IMAGES/Drawing.png">
+<div class="hobby-info">
+<p><span class="info-label">HOBBY</span><span class="info-value">Drawing</span></p>
+<p><span class="info-label">Info</span><span class="info-value"> W  henever I feel creative, I use that time to create art.</span></p>
+</div>
+</div>
+
+<div class="hobby">
+<img class="hobby-photo" src="IMAGES/Badminton.jpg">
+<div class="hobby-info">
+<p><span class="info-label">HOBBY</span><span class="info-value">Badminton</span></p>
+<p><span class="info-label">Info</span><span class="info-value">I spend some time playing badminton with my friends.</span></p>
+</div>
+</div>
+
+</div>
+
+<!-- right page -->
+<div class="page page-right">
+
+<div class="hobby">
+<img class="hobby-photo" src="IMAGES/Guitar.png">
+<div class="hobby-info">
+<p><span class="info-label">HOBBY</span><span class="info-value">Guitar</span></p>
+<p><span class="info-label">Info</span><span class="info-value">I spend some time learning some chords and just enjoy its ryhthm.</span></p>
+</div>
+</div>
+
+<div class="hobby">
+<img class="hobby-photo" src="IMAGES/Eating.png">
+<div class="hobby-info">
+<p><span class="info-label">HOBBY</span><span class="info-value">Eating</span></p>
+<p><span class="info-label">Info</span><span class="info-value">I love eating. I LOVE LOVE LOVE eating!</span></p>
+</div>
+</div>
+
+</div>
+
+<!-- bookmarks on the left -->
+<div class="bookmark-wrap pos-left-1"><button class="bookmark-btn bm-red" id="bm1">PERSONAL INFORMATION</button></div>
+<div class="bookmark-wrap pos-left-2"><button class="bookmark-btn bm-blue" id="bm2">EDUCATIONAL BACKGROUND</button></div>
+<div class="bookmark-wrap pos-left-3"><button class="bookmark-btn bm-green" id="bm3">SKILLS</button></div>
+
+<!-- bookmarks on the right -->
+<div class="bookmark-wrap pos-right-1"><button class="bookmark-btn bm-purple" id="bm4">HOBBIES</button></div>
+<div class="bookmark-wrap pos-right-2"><button class="bookmark-btn bm-orange" id="bm5">CONTACT DETAILS</button></div>
+
+</div>
+
+<!-- close button -->
+<div class="close-wrap">
+<button class="pixel-btn" id="closeBookBtn">Close Book</button>
+</div>
+
+<!-- music -->
+<audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+<script>
+// get the music
+var music = document.getElementById("bgMusic");
+
+// get the saved time so the music continues
+var savedTime = sessionStorage.getItem("musicTime");
+if (savedTime != null) {
+  music.currentTime = savedTime;
+}
+
+// save the time when leaving the page
+window.onbeforeunload = function() {
+  sessionStorage.setItem("musicTime", music.currentTime);
+};
+
+// some browsers block autoplay so play it when the user clicks
+document.onclick = function() {
+  music.play();
+};
+</script>
+
+<script src="Bookmark.js"></script>
+
+</body>
+</html>

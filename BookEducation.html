@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Portfolio</title>
+<link rel="stylesheet" href="BookEducation.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- the book -->
+<div class="book">
+
+<img class="layer-image" src="IMAGES/Book.png">
+
+<!-- left page -->
+<div class="page page-left">
+
+<div class="school">
+<img class="school-photo" src="IMAGES/Elementary.jpg">
+<div class="school-info">
+<p><span class="info-label">Elementary School</span><span class="info-value">Acacia Elementary School</span></p>
+<p><span class="info-label">Year</span><span class="info-value">2014-2020</span></p>
+</div>
+</div>
+
+<div class="school">
+<img class="school-photo" src="IMAGES/JuniorHigh.jpg">
+<div class="school-info">
+<p><span class="info-label">Junior High School</span><span class="info-value">Tinajeros National High School</span></p>
+<p><span class="info-label">Year</span><span class="info-value">2020-2024</span></p>
+</div>
+</div>
+
+</div>
+
+<!-- right page -->
+<div class="page page-right">
+
+<div class="school">
+<img class="school-photo" src="IMAGES/SeniorHigh.jpg">
+<div class="school-info">
+<p><span class="info-label">Senior High School</span><span class="info-value">Arellano University Jose Rizal Campus</span></p>
+<p><span class="info-label">Year</span><span class="info-value">2024-2026</span></p>
+</div>
+</div>
+
+<div class="school">
+<img class="school-photo" src="IMAGES/College.jpg">
+<div class="school-info">
+<p><span class="info-label">College</span><span class="info-value">Pamantasan ng Lungsod ng Maynila</span></p>
+<p><span class="info-label">Year</span><span class="info-value">Present</span></p>
+</div>
+</div>
+
+</div>
+
+<!-- bookmarks on the left -->
+<div class="bookmark-wrap pos-left-1"><button class="bookmark-btn bm-red" id="bm1">PERSONAL INFORMATION</button></div>
+<div class="bookmark-wrap pos-left-2"><button class="bookmark-btn bm-blue" id="bm2">EDUCATIONAL BACKGROUND</button></div>
+<div class="bookmark-wrap pos-left-3"><button class="bookmark-btn bm-green" id="bm3">SKILLS</button></div>
+
+<!-- bookmarks on the right -->
+<div class="bookmark-wrap pos-right-1"><button class="bookmark-btn bm-purple" id="bm4">HOBBIES</button></div>
+<div class="bookmark-wrap pos-right-2"><button class="bookmark-btn bm-orange" id="bm5">CONTACT DETAILS</button></div>
+
+</div>
+
+<!-- close button -->
+<div class="close-wrap">
+<button class="pixel-btn" id="closeBookBtn">Close Book</button>
+</div>
+
+<!-- music -->
+<audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+<script>
+// get the music
+var music = document.getElementById("bgMusic");
+
+// get the saved time so the music continues
+var savedTime = sessionStorage.getItem("musicTime");
+if (savedTime != null) {
+  music.currentTime = savedTime;
+}
+
+// save the time when leaving the page
+window.onbeforeunload = function() {
+  sessionStorage.setItem("musicTime", music.currentTime);
+};
+
+// some browsers block autoplay so play it when the user clicks
+document.onclick = function() {
+  music.play();
+};
+</script>
+
+<script src="Bookmark.js"></script>
+
+</body>
+</html>

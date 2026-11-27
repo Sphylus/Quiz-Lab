@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Portfolio</title>
+<link rel="stylesheet" href="BookContact.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- the book -->
+<div class="book">
+
+<img class="layer-image" src="IMAGES/Book.png">
+
+<!-- left page -->
+<div class="page page-left">
+
+<p class="contact">
+<span class="info-label">Email</span>
+<a class="info-value" href="mailto:Jerickdimaano670@gmail.com">Jerickdimaano670@gmail.com</a>
+</p>
+
+<p class="contact">
+<span class="info-label">Number</span>
+<span class="info-value">09081905470</span>
+</p>
+
+<p class="contact">
+<span class="info-label">Outlook</span>
+<a class="info-value" href="mailto:jzdimaano2026@plm.edu.ph">jzdimaano2026@plm.edu.ph</a>
+</p>
+
+<p class="contact">
+<span class="info-label">Facebook</span>
+<span class="info-value">Jerick Z. Dimaano</span>
+<a href="https://www.facebook.com/jerick.dimaano.98" target="_blank" rel="noopener">https://www.facebook.com/jerick.dimaano.98</a>
+</p>
+
+</div>
+
+<!-- right page -->
+<div class="page page-right">
+
+<p class="contact">
+<span class="info-label">Youtube</span>
+<span class="info-value">@BatDcmbr</span>
+<a href="https://www.youtube.com/@BatDcmbr" target="_blank" rel="noopener">https://www.youtube.com/@BatDcmbr</a>
+</p>
+
+<p class="contact">
+<span class="info-label">Tiktok</span>
+<span class="info-value">@jekjek0879</span>
+<a href="https://www.tiktok.com/@jekjek0879" target="_blank" rel="noopener">https://www.tiktok.com/@jekjek0879</a>
+</p>
+
+<p class="contact">
+<span class="info-label">Instagram</span>
+<span class="info-value">@Sphylus</span>
+<a href="https://www.instagram.com/sphylus/" target="_blank" rel="noopener">https://www.instagram.com/sphylus/</a>
+</p>
+
+</div>
+
+<!-- bookmarks on the left -->
+<div class="bookmark-wrap pos-left-1"><button class="bookmark-btn bm-red" id="bm1">PERSONAL INFORMATION</button></div>
+<div class="bookmark-wrap pos-left-2"><button class="bookmark-btn bm-blue" id="bm2">EDUCATIONAL BACKGROUND</button></div>
+<div class="bookmark-wrap pos-left-3"><button class="bookmark-btn bm-green" id="bm3">SKILLS</button></div>
+
+<!-- bookmarks on the right -->
+<div class="bookmark-wrap pos-right-1"><button class="bookmark-btn bm-purple" id="bm4">HOBBIES</button></div>
+<div class="bookmark-wrap pos-right-2"><button class="bookmark-btn bm-orange" id="bm5">CONTACT DETAILS</button></div>
+
+</div>
+
+<!-- close button -->
+<div class="close-wrap">
+<button class="pixel-btn" id="closeBookBtn">Close Book</button>
+</div>
+
+<!-- music -->
+<audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+<script>
+// get the music
+var music = document.getElementById("bgMusic");
+
+// get the saved time so the music continues
+var savedTime = sessionStorage.getItem("musicTime");
+if (savedTime != null) {
+  music.currentTime = savedTime;
+}
+
+// save the time when leaving the page
+window.onbeforeunload = function() {
+  sessionStorage.setItem("musicTime", music.currentTime);
+};
+
+// some browsers block autoplay so play it when the user clicks
+document.onclick = function() {
+  music.play();
+};
+</script>
+
+<script src="Bookmark.js"></script>
+
+</body>
+</html>

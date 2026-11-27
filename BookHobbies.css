@@ -1,0 +1,312 @@
+/* whole page */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;   /* no scrolling */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #14122b;
+  background-image: url("GIF/Background.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* dark layer on top of the background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 18, 43, 0.35);
+  z-index: -1;
+}
+
+/* book */
+.book {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.layer-image {
+  position: relative;
+  width: 65vw;
+  z-index: 1;
+}
+
+/*  bookmarks  */
+.bookmark-wrap {
+  position: absolute;
+  z-index: 2;
+  filter: drop-shadow(4px 4px 0 black);
+}
+
+/* left side */
+.pos-left-1, .pos-left-2, .pos-left-3 {
+  right: calc(100% - 50px);
+}
+
+/* right side */
+.pos-right-1, .pos-right-2 {
+  left: calc(100% - 50px);
+}
+
+/* spacing from the top */
+.pos-left-1, .pos-right-1 {
+  top: 60px;
+}
+
+.pos-left-2, .pos-right-2 {
+  top: 124px;
+}
+
+.pos-left-3 {
+  top: 188px;
+}
+
+/* gray clip on the bookmarks */
+.bookmark-wrap::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 14px;
+  background-color: #c9c9d9;
+  box-shadow: inset 3px 3px 0 #ececf5, inset -3px -3px 0 #7a7a92;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pos-left-1::before, .pos-left-2::before, .pos-left-3::before {
+  right: 14px;
+}
+
+.pos-right-1::before, .pos-right-2::before {
+  left: 14px;
+}
+
+.bookmark-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 48px;
+  font-family: "Silkscreen", "Courier New", monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+/* shape of the left bookmarks */
+.pos-left-1 .bookmark-btn,
+.pos-left-2 .bookmark-btn,
+.pos-left-3 .bookmark-btn {
+  padding: 0 58px 0 24px;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%, 0 100%,
+    0 calc(100% - 8px), 8px calc(100% - 8px), 8px calc(100% - 16px),
+    16px calc(100% - 16px), 16px 16px, 8px 16px, 8px 8px, 0 8px
+  );
+}
+
+/* shape of the right bookmarks */
+.pos-right-1 .bookmark-btn,
+.pos-right-2 .bookmark-btn {
+  padding: 0 24px 0 58px;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 8px, calc(100% - 8px) 8px, calc(100% - 8px) 16px,
+    calc(100% - 16px) 16px, calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 8px) calc(100% - 16px), calc(100% - 8px) calc(100% - 8px),
+    100% calc(100% - 8px), 100% 100%, 0 100%
+  );
+}
+
+/* bookmark colors */
+.bm-red {
+  background-color: #ff6b6b;
+  box-shadow: inset 3px 3px 0 #ff9a9a, inset -3px -3px 0 #b33a3a;
+  text-shadow: 2px 2px 0 #b33a3a;
+}
+
+.bm-blue {
+  background-color: #4d7cff;
+  box-shadow: inset 3px 3px 0 #8aa8ff, inset -3px -3px 0 #2a4bb3;
+  text-shadow: 2px 2px 0 #2a4bb3;
+}
+
+.bm-green {
+  background-color: #3fbf6f;
+  box-shadow: inset 3px 3px 0 #7fe0a2, inset -3px -3px 0 #228048;
+  text-shadow: 2px 2px 0 #228048;
+}
+
+.bm-purple {
+  background-color: #a35cff;
+  box-shadow: inset 3px 3px 0 #c79aff, inset -3px -3px 0 #6a2fb3;
+  text-shadow: 2px 2px 0 #6a2fb3;
+}
+
+.bm-orange {
+  background-color: #ff9100;
+  box-shadow: inset 3px 3px 0 #ffb84d, inset -3px -3px 0 #a85d00;
+  text-shadow: 2px 2px 0 #a85d00;
+}
+
+/* bookmark hover */
+.bookmark-btn:hover {
+  filter: hue-rotate(300deg);
+}
+
+.pos-left-1 .bookmark-btn:hover,
+.pos-left-2 .bookmark-btn:hover,
+.pos-left-3 .bookmark-btn:hover {
+  transform: translateX(-10px);
+}
+
+.pos-right-1 .bookmark-btn:hover,
+.pos-right-2 .bookmark-btn:hover {
+  transform: translateX(10px);
+}
+
+/* bookmark click */
+.pos-left-1 .bookmark-btn:active,
+.pos-left-2 .bookmark-btn:active,
+.pos-left-3 .bookmark-btn:active {
+  transform: translateX(-5px);
+}
+
+.pos-right-1 .bookmark-btn:active,
+.pos-right-2 .bookmark-btn:active {
+  transform: translateX(5px);
+}
+
+/*  book pages  */
+.page {
+  position: absolute;
+  top: 9%;
+  bottom: 9%;
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.page-left {
+  left: calc(6% + 5px);
+}
+
+.page-right {
+  left: 53%;
+}
+
+/*  hobbies  */
+.hobby {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 43% 50%;
+  column-gap: 7%;
+  align-content: center;
+  align-items: start;
+  min-height: 0;
+}
+
+.hobby-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-sizing: border-box;
+  border: 5px solid #5a3a1e;
+  background-color: #e8d9a8;
+  box-shadow: inset 0 0 0 3px #f2e3b3, 4px 4px 0 rgba(0, 0, 0, 0.45);
+  image-rendering: pixelated;
+}
+
+/* hides the broken image icon when there is no file path yet */
+.hobby-photo[src=""] {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E");
+}
+
+.hobby-info {
+  font-family: "Silkscreen", "Courier New", monospace;
+  font-size: 0.75vw;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hobby-info p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  display: block;
+  color: #a0702f;
+}
+
+.info-value {
+  display: block;
+  color: #3b2412;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #e8d9a8;
+}
+
+/*  close book button  */
+.close-wrap {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  filter: drop-shadow(4px 4px 0 black);
+}
+
+.pixel-btn {
+  width: 320px;
+  padding: 16px 24px;
+  font-family: "Silkscreen", "Courier New", monospace;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2a1f3d;
+  text-shadow: 2px 2px 0 #ffe58a;
+  background-color: #ffc93c;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset 4px 4px 0 #ffe58a, inset -4px -4px 0 #c98a00;
+
+  /* pixel corners */
+  clip-path: polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.pixel-btn:hover {
+  background-color: #ff9100;
+  box-shadow: inset 4px 4px 0 #ff9100, inset -4px -4px 0 #884d00;
+}
+
+.pixel-btn:active {
+  box-shadow: inset -4px -4px 0 #ffe58a, inset 4px 4px 0 #c98a00;
+  padding-top: 18px;
+  padding-bottom: 14px;
+}

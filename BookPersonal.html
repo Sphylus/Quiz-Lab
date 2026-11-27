@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Portfolio</title>
+<link rel="stylesheet" href="BookPersonal.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- the book -->
+<div class="book">
+
+<img class="layer-image" src="IMAGES/Book.png">
+
+<!-- left page -->
+<div class="profile-left">
+<img class="profile-photo" src="IMAGES/me.png">
+
+<div class="profile-below">
+<p><span class="info-label">Birthdate</span><span class="info-value">December 13, 2008</span></p>
+<p><span class="info-label">Gender</span><span class="info-value">Men</span></p>
+<p><span class="info-label">Favorite Food</span><span class="info-value">All of the Above</span></p>
+<p><span class="info-label">Favorite Movie</span><span class="info-value">Interstellar</span></p>
+<p><span class="info-label">Favorite Color</span><span class="info-value">Rainbow</span></p>
+<p><span class="info-label">Hair Color</span><span class="info-value">Black</span></p>
+<p><span class="info-label">Eye Color</span><span class="info-value">Dark Brown</span></p>
+<p><span class="info-label">Skin Tone</span><span class="info-value"><span class="swatch"></span>#e8d9a8</span></p>
+</div>
+</div>
+
+<!-- right page -->
+<div class="profile-right">
+<h2 class="body-title">Body Parts</h2>
+<div class="body-list">
+<p><span class="info-label">Head</span><span class="info-value">1</span></p>
+<p><span class="info-label">Arms</span><span class="info-value">2</span></p>
+<p><span class="info-label">Hand Fingers</span><span class="info-value">10</span></p>
+<p><span class="info-label">Hands</span><span class="info-value">2</span></p>
+<p><span class="info-label">Legs</span><span class="info-value">2</span></p>
+<p><span class="info-label">Feet</span><span class="info-value">2</span></p>
+<p><span class="info-label">Feet Fingers</span><span class="info-value">10</span></p>
+</div>
+</div>
+
+<!-- name, age, etc -->
+<div class="profile-info">
+<p><span class="info-label">Name</span><span class="info-value">Jerick Z. Dimaano</span></p>
+<p><span class="info-label">Age</span><span class="info-value">17</span></p>
+<p><span class="info-label">Sex</span><span class="info-value">Male</span></p>
+<p><span class="info-label">Education Level</span><span class="info-value">College</span></p>
+</div>
+
+<!-- bookmarks on the left -->
+<div class="bookmark-wrap pos-left-1"><button class="bookmark-btn bm-red" id="bm1">PERSONAL INFORMATION</button></div>
+<div class="bookmark-wrap pos-left-2"><button class="bookmark-btn bm-blue" id="bm2">EDUCATIONAL BACKGROUND</button></div>
+<div class="bookmark-wrap pos-left-3"><button class="bookmark-btn bm-green" id="bm3">SKILLS</button></div>
+
+<!-- bookmarks on the right -->
+<div class="bookmark-wrap pos-right-1"><button class="bookmark-btn bm-purple" id="bm4">HOBBIES</button></div>
+<div class="bookmark-wrap pos-right-2"><button class="bookmark-btn bm-orange" id="bm5">CONTACT DETAILS</button></div>
+
+</div>
+
+<!-- close button -->
+<div class="close-wrap">
+<button class="pixel-btn" id="closeBookBtn">Close Book</button>
+</div>
+
+<!-- music -->
+<audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+<script>
+// get the music
+var music = document.getElementById("bgMusic");
+
+// get the saved time so the music continues
+var savedTime = sessionStorage.getItem("musicTime");
+if (savedTime != null) {
+  music.currentTime = savedTime;
+}
+
+// save the time when leaving the page
+window.onbeforeunload = function() {
+  sessionStorage.setItem("musicTime", music.currentTime);
+};
+
+// some browsers block autoplay so play it when the user clicks
+document.onclick = function() {
+  music.play();
+};
+</script>
+
+<script src="Bookmark.js"></script>
+
+</body>
+</html>

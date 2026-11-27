@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="SelectingPage.css">
+</head>
+
+<body>
+  <!-- title -->
+  <header class="page-header">
+    <h1 class="title">My Personal Portfolio</h1>
+  </header>
+
+  <!-- button -->
+  <main class="screen">
+    <div class="pixel-wrap">
+      <button class="pixel-btn" id="themeBtn">OPEN</button>
+    </div>
+  </main>
+
+  <!-- background music -->
+  <audio id="bgMusic" src="SOUND/BackgroundMusic.mp3" autoplay loop></audio>
+
+  <script>
+    // get the music
+    var music = document.getElementById("bgMusic");
+
+    // continue the music where it stopped
+    var savedTime = sessionStorage.getItem("musicTime");
+
+    if (savedTime != null) {
+      music.currentTime = savedTime;
+    }
+
+    // save the music time before leaving the page
+    window.onpagehide = function () {
+      sessionStorage.setItem("musicTime", music.currentTime);
+    };
+
+    // play the music
+    music.play();
+
+    // if the browser blocks it, play when the user clicks
+    document.onclick = function () {
+      music.play();
+    };
+
+    // or when the user presses a key
+    document.onkeydown = function () {
+      music.play();
+    };
+  </script>
+
+  <script src="SelectingPage.js"></script>
+</body>
+</html>
